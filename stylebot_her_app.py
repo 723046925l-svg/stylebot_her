@@ -1,8 +1,31 @@
 
 import streamlit as st
-from translators import translations  # لو سميت الملف translations.py
 
-# اختيارات اللغة
+# تعريف الترجمات
+translations = {
+    "ar": {
+        "title": "ستايل بوت - لها",
+        "subtitle": "احصلي على توصيات لبسك المثالي",
+        "skin_color": "لون البشرة:",
+        "height": "الطول:",
+        "body_shape": "شكل الجسم:",
+        "occasion": "المناسبة:",
+        "button": "احصلي على توصيتك",
+        "recommendation_title": "✨ توصيتك:"
+    },
+    "en": {
+        "title": "StyleBot Her",
+        "subtitle": "Get your perfect outfit recommendation",
+        "skin_color": "Skin Color:",
+        "height": "Height:",
+        "body_shape": "Body Shape:",
+        "occasion": "Occasion:",
+        "button": "Get Your Recommendation",
+        "recommendation_title": "✨ Your Recommendation:"
+    }
+}
+
+# واجهة اختيار اللغة
 lang = st.sidebar.selectbox("اختر اللغة / Choose Language", ("العربية", "English"))
 
 if lang == "العربية":
@@ -24,8 +47,7 @@ height = st.selectbox(t["height"], الأطوال)
 shape = st.selectbox(t["body_shape"], أشكال_الجسم)
 occasion = st.selectbox(t["occasion"], المناسبات)
 
-if st.button(t["get_recommendation"]):
-    # الجزء اللي يولّد التوصية...
-    # بعدين تعرضها بعنوان:
+if st.button(t["button"]):
+    # تستبدل الكود اللي يولد التوصية حسب النموذج اللي تستخدمه
     st.success(t["recommendation_title"])
-    # ثم النص الناتج
+    st.write("هنا تطلع التوصية تلقائيًا حسب مدخلاتك")
